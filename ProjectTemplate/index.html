@@ -35,9 +35,53 @@
 	<style>
    @import url('https://fonts.cdnfonts.com/css/star-wars');
 	</style>
+	<link rel="stylesheet" href="styles.css">
 	<!--END OF YOUR OWN CSS-->
 </head >
 <body>
-	<button onclick="javascript: TestButtonHandler();">Click here to test connection!</button>
+	<!-- <button onclick="javascript: TestButtonHandler();">Click here to test connection!</button>-->
+
+
+	<!--<div class="crawl"> 
+		These are two classes I'm working with to attempt to make the text scroll onto the screen like the opening crawl in the Star Wars movies.
+		If I can't get this to function properly soon, I'll delete it.
+	
+		<div class="crawl-content"> -->
+
+	 		<div class="primary-text"> <!-- This div is used in order to center all of the text on the page (other than the footer)-->
+
+     			<h1 id="title-line1">May Ethical Management</h1>
+	 			<h1 id="title-line2">Be With You</h1>
+
+
+	 			<div class="login-container"> <!-- This div is used to contain the login form-->
+
+					<h2>Welcome</h2>
+
+					<form class="input-form">
+
+						<div class="input-group">
+							<label for="username">Username</label>
+							<input type="text" id="username" name="username" required>
+						</div>
+
+						<div class="input-group">
+							<label for="password">Password</label>
+							<input type="password" id="password" name="password" required>
+						</div>
+
+							<button id="login-button" type="submit">Login</button>
+
+					</form>
+				</div>
+	 		
+			</div>
+
+			<footer>
+				&copy; 2025 Sun Squad, All Rights Reserved
+	 		</footer>
+
+		<!--</div>
+	</div> -->
 </body>
-</html >
+</html>
