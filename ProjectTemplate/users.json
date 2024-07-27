@@ -1,0 +1,72 @@
+[
+    {
+        "username": "Alice123",
+        "password": "pass1",
+        "userID": "10001",
+        "email": "alice123@example.com",
+        "isAdmin": false
+    },
+    {
+        "username": "Bob456",
+        "password": "pass2",
+        "userID": "10002",
+        "email": "bob456@example.com",
+        "isAdmin": true
+    },
+    {
+        "username": "Charlie789",
+        "password": "pass3",
+        "userID": "10003",
+        "email": "charlie789@example.com",
+        "isAdmin": false
+    },
+    {
+        "username": "David321",
+        "password": "pass4",
+        "userID": "10004",
+        "email": "david321@example.com",
+        "isAdmin": false
+    },
+    {
+        "username": "Eve654",
+        "password": "pass5",
+        "userID": "10005",
+        "email": "eve654@example.com",
+        "isAdmin": true
+    },
+    {
+        "username": "Frank987",
+        "password": "pass6",
+        "userID": "10006",
+        "email": "frank987@example.com",
+        "isAdmin": false
+    },
+    {
+        "username": "Grace123",
+        "password": "pass7",
+        "userID": "10007",
+        "email": "grace123@example.com",
+        "isAdmin": false
+    },
+    {
+        "username": "Hank456",
+        "password": "pass8",
+        "userID": "10008",
+        "email": "hank456@example.com",
+        "isAdmin": true
+    },
+    {
+        "username": "Ivy789",
+        "password": "pass9",
+        "userID": "10009",
+        "email": "ivy789@example.com",
+        "isAdmin": false
+    },
+    {
+        "username": "Jack321",
+        "password": "pass10",
+        "userID": "10010",
+        "email": "jack321@example.com",
+        "isAdmin": false
+    }
+]

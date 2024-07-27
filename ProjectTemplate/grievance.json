@@ -1,0 +1,82 @@
+[
+    {
+        "complaintID": "32456",
+        "text": "Stormtrooper TK-421 reporting faulty blaster rifle. The weapon jams during critical missions.",
+        "priority": 1,
+        "type": 1,
+        "status": 0,
+        "assignedAdmin": "Bob456"
+    },
+    {
+        "complaintID": "75842",
+        "text": "Stormtrooper TK-5338 encountered friendly fire during a routine patrol. Request immediate investigation.",
+        "priority": 2,
+        "type": 2,
+        "status": 1,
+        "assignedAdmin": "Eve654"
+    },
+    {
+        "complaintID": "49175",
+        "text": "Stormtrooper TK-9987 experienced a delay in transport services, causing missed deployment.",
+        "priority": 3,
+        "type": 6,
+        "status": 2,
+        "assignedAdmin": "Hank456"
+    },
+    {
+        "complaintID": "27681",
+        "text": "Stormtrooper TK-1247 reports incorrect payment in the latest paycheck. Urgent correction needed.",
+        "priority": 4,
+        "type": 5,
+        "status": 3,
+        "assignedAdmin": "Bob456"
+    },
+    {
+        "complaintID": "93542",
+        "text": "Stormtrooper TK-3425 found bacta tank leaking, reducing effectiveness of medical treatment.",
+        "priority": 2,
+        "type": 3,
+        "status": 0,
+        "assignedAdmin": "Eve654"
+    },
+    {
+        "complaintID": "12895",
+        "text": "Stormtrooper TK-6231 experiencing ongoing technical support issues with helmet HUD.",
+        "priority": 3,
+        "type": 4,
+        "status": 4,
+        "assignedAdmin": "Hank456"
+    },
+    {
+        "complaintID": "67284",
+        "text": "Stormtrooper TK-5567 reports faulty armor plating, compromising safety in combat.",
+        "priority": 1,
+        "type": 1,
+        "status": 1,
+        "assignedAdmin": "Bob456"
+    },
+    {
+        "complaintID": "49832",
+        "text": "Stormtrooper TK-7823 encountered friendly fire during tactical training. Review of protocols needed.",
+        "priority": 2,
+        "type": 2,
+        "status": 2,
+        "assignedAdmin": "Eve654"
+    },
+    {
+        "complaintID": "39482",
+        "text": "Stormtrooper TK-2149 faced delays in equipment maintenance, impacting mission readiness.",
+        "priority": 3,
+        "type": 6,
+        "status": 3,
+        "assignedAdmin": "Hank456"
+    },
+    {
+        "complaintID": "84752",
+        "text": "Stormtrooper TK-6128 received incorrect payment, affecting morale and efficiency.",
+        "priority": 4,
+        "type": 5,
+        "status": 4,
+        "assignedAdmin": "Bob456"
+    }
+]
