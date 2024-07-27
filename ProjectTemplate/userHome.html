@@ -38,15 +38,17 @@
                 <option value="General Hux">General Hux</option>
                 <option value="Captain Phasma">Captain Phasma</option>
             </select>
-            <label for="priorityLevel">priority level</label>
-            <select name="priorityLevel" id="priorityLevel">
-                <option value=""> </option>
-                <option value="1">Priority I</option>
-                <option value="2">Priority II</option>
-                <option value="3">Priority III</option>
-                <option value="4">Priority IV</option>
-          
-            </select>
+
+            <br />
+            <br />
+            
+              <!-- New dropdown for grievances -->
+              <label for="grievanceDropdown">Grievance</label>
+              <select name="grievanceDropdown" id="grievanceDropdown">
+                  <option value="" selected> </option>
+                  <!-- Options will be populated by JavaScript -->
+              </select>
+
             <br />
             <br />
             <label for="offenseTextDescription">Please provide a breif desciprtion of the offense that occured</label> <br />
@@ -54,5 +56,7 @@
             <input type="submit" />
         </form>
     </div>
+
+    <script src="grievance.js"></script>
 </body>
 </html>
