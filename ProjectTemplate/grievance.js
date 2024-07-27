@@ -30,7 +30,7 @@ function generateComplaintNumber(max) {
     return Math.floor(Math.random()*max)
 }
 
-formValid = false;
+formValid;
 //stores user input and gives them a complaint number
 function submitForm() {
    let leaderSelected = document.getElementById("leaderSelected").value;
@@ -38,21 +38,21 @@ function submitForm() {
    let offenseText = document.getElementById("offenseTextDescription").value;
    let complaintNumber = generateComplaintNumber(99999);
 
-   let validity = true;
+   //let validity = true;
 
    var form = document.getElementById('userComplaintForm');
     for(var i=0; i < form.elements.length; i++){
       if(form.elements[i].value === '' && form.elements[i].hasAttribute('required')){
         document.getElementById("formSubmitted").innerHTML = "Please input the missing values";
-        return false;
+        formValid= false;
       }
     else {
         document.getElementById("formSubmitted").innerHTML = "Thank you for submitting your grievance your complaint ID is: " + complaintNumber;
-        return true;
+         formValid= true;
       }
     }
     
-    formSubmission(submitForm());
+    formSubmission(formValid);
     }
     
     //attempts to append to formSubmitted ID after submitting form and giving the customer a complaintID
