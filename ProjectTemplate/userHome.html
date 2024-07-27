@@ -32,7 +32,7 @@
         <form id="userComplaintForm">
             <label for="leaderSelected">Leader</label>
 
-            <select name="leaderSelected" id="leaderSelected">
+            <select name="leaderSelected" id="leaderSelected" required>
                 <option value=""> </option>
                 <option value="Kylo Ren">Kylo Ren</option>
                 <option value="General Hux">General Hux</option>
@@ -52,10 +52,11 @@
             <br />
             <br />
             <label for="offenseTextDescription">Please provide a breif desciprtion of the offense that occured</label> <br />
-            <input name="offenseTextDescription" id="offenseTextDescription" type="text"/> <br />
-            <input type="submit" />
+            <input name="offenseTextDescription" id="offenseTextDescription" type="text" required/> <br />
+            <input type="submit" onclick="submitForm()" id ="submitButton"/>
         </form>
     </div>
+    <p id = "formSubmitted"> </p>
 
     <script src="grievance.js"></script>
 </body>
