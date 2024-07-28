@@ -30,45 +30,43 @@ function generateComplaintNumber(max) {
     return Math.floor(Math.random()*max)
 }
 
-formValid;
 //stores user input and gives them a complaint number
 function submitForm() {
    let leaderSelected = document.getElementById("leaderSelected").value;
    let grievanceType = document.getElementById("grievanceDropdown").value;
    let offenseText = document.getElementById("offenseTextDescription").value;
-   let complaintNumber = generateComplaintNumber(99999);
+   let  complaintNumber = generateComplaintNumber(99999);
 
-   //let validity = true;
+  
 
-   var form = document.getElementById('userComplaintForm');
-    for(var i=0; i < form.elements.length; i++){
-      if(form.elements[i].value === '' && form.elements[i].hasAttribute('required')){
+
+    if (leaderSelected == "" || grievanceType == "" || offenseText=="") {
         document.getElementById("formSubmitted").innerHTML = "Please input the missing values";
-        formValid= false;
+  
       }
     else {
-        document.getElementById("formSubmitted").innerHTML = "Thank you for submitting your grievance your complaint ID is: " + complaintNumber;
-         formValid= true;
+        document.getElementById('formSubmitted').innerHTML = "Thanks for submitting your complaint. Your complaint number is "+ complaintNumber;
+        console.log('Return true');
       }
-    }
+
     
-    formSubmission(formValid);
-    }
     
-    //attempts to append to formSubmitted ID after submitting form and giving the customer a complaintID
+}
+
+
+ //attempts to append to formSubmitted ID after submitting form and giving the customer a complaintID
    
-  
 
-    function formSubmission(validity){
-        let complaintNumber = generateComplaintNumber(99999);
-       
-        if (validity) {
-        document.getElementById("formSubmitted").innerHTML = "Thank you for submitting your grievance your complaint ID is: " + complaintNumber;
-        }
+/*function formSubmission(leaderSelected, greivanceType, offenseText) {
+    let complaintNumber = generateComplaintNumber(99999);
+    //this will be used to add data to the json file
+
+    //takes you to new page once complaint is submitted
+    window.location.href = 'complaintSubmitted.html';
+    
+       // document.getElementById("formSubmitted").innerHTML = "Thank you for submitting your grievance your complaint ID is: " + complaintNumber;
     }
-  
-
-
+  */
 
 
 
