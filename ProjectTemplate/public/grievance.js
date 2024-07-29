@@ -22,7 +22,7 @@ function populateDropdown() {
 
 // Generates a complaint number
 function generateComplaintNumber(max) {
-    return Math.floor(Math.random() * max);
+    return Math.floor(Math.random() * max).toString().padStart(5, '0'); // Ensure 5 digit number
 }
 
 // Handles form submission
@@ -62,19 +62,29 @@ async function submitForm() {
     }
 }
 
-function searchComplaint(complaintSN) {
-    console.log("Searching for complaint");
-    fetch('./grievance.json')
-        .then(respone => response.json())
+function searchComplaint() {
+    const complaintSN = document.getElementById('complaintSerialNumber').value;
+    fetch('/api/grievances')
+        .then(response => response.json())
         .then(grievances => {
-            const grievanceList = document.getElementById('greivance-list');
-
-            grievances.forEach(grievance => {
-                if (grievance.complaintID === complaintSN) {
-                    document.getElementById('complaintDetails') = 'Found grievance';
-                }
-            })
-})
+            const complaint = grievances.find(grievance => grievance.complaintID === complaintSN);
+            if (complaint) {
+                document.getElementById('complaintDetails').innerHTML = `
+                    <p>Complaint ID: ${complaint.complaintID}</p>
+                    <p>Description: ${complaint.text}</p>
+                    <p>Type: ${complaint.type}</p>
+                    <p>Priority: ${complaint.priority}</p>
+                    <p>Status: ${complaint.status}</p>
+                    <p>Assigned Admin: ${complaint.assignedAdmin}</p>
+                `;
+            } else {
+                document.getElementById('complaintDetails').innerHTML = "Complaint not found.";
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching grievances:', error);
+            document.getElementById('complaintDetails').innerHTML = "There was an error retrieving the complaint.";
+        });
 }
 
-document.addEventListener('DOMContentLoaded', populateDropdown); 
+document.addEventListener('DOMContentLoaded', populateDropdown);
