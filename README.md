@@ -12,3 +12,9 @@ node server.js
 ```
 
 Then visit the [site](http://localhost:3000)
+
+```markdown
+
+[site](URL "[Title](http://localhost:3000)" target="_blank")
+
+```
