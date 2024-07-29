@@ -11,4 +11,4 @@ Run the following command:
 node server.js
 ```
 
-Then visit the [site](https://localhost:3000)
+Then visit the [site](http://localhost:3000)
