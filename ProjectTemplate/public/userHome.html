@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>User Homepage</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/star-wars');
+        #userComplaintHistoryDiv {
+            text-align: center;
+        }
+        #userComplaintFormDiv {
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Welcome Trooper!</h1>
+    <div id="userComplaintHistoryDiv">
+        <h2>Enter your 5 digit complaint serial number to view a complaint</h2>
+        <input type="text" id="complaintSerialNumber" />
+        <input type="button" value="Search" onclick="searchComplaint()" />
+        <p id="complaintDetails">THE INNER HTML FROM THE SEARCH WILL GO HERE</p>
+    </div>
+    <div id="userComplaintFormDiv">
+        <h2>Submit a Complaint Here</h2>
+        <form id="userComplaintForm">
+            <label for="leaderSelected">Leader</label>
+            <select name="leaderSelected" id="leaderSelected" required>
+                <option value="">Select Leader</option>
+                <option value="Kylo Ren">Kylo Ren</option>
+                <option value="General Hux">General Hux</option>
+                <option value="Captain Phasma">Captain Phasma</option>
+            </select>
+            <br><br>
+            <label for="grievanceDropdown">Grievance</label>
+            <select name="grievanceDropdown" id="grievanceDropdown" required>
+                <option value="">Select Grievance</option>
+                <!-- Options will be populated by JavaScript -->
+            </select>
+            <br><br>
+            <label for="offenseTextDescription">Please provide a brief description of the offense that occurred</label>
+            <input name="offenseTextDescription" id="offenseTextDescription" type="text" required />
+            <br><br>
+            <input type="button" onclick="submitForm()" id="submitButton" value="Submit"/>
+        </form>
+        <p id="formSubmitted"></p>
+    </div>
+    <script src="grievance.js"></script>
+</body>
+</html>

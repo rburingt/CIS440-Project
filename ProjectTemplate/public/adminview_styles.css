@@ -1,0 +1,45 @@
+@import url('https://fonts.cdnfonts.com/css/star-wars');
+
+body {
+    font-family: 'Star Wars', sans-serif;
+    color: white;
+    background-image: url('space.jpg');
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+    margin: 20px;
+    padding: 10px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px, lightgray;
+}
+
+th {
+    background-color: rgba(0,0,0,0.9);
+}
+
+select {
+    background-color: black;
+    color: white;
+    border: 1px, solid darkgray;
+    padding: 5px;
+    border-radius: 4px;
+}
