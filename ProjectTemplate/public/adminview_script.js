@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('/api/grievances')
         .then(response => response.json())
         .then(grievances => {
-            const grievancesList = document.getElementById('grievances-list');
+            const grievancesList = document.getElementById('grievance-list');
 
             grievances.forEach(grievance => {
                 const row = document.createElement('tr');
