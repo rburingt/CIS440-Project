@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/api/grievances')
+    fetch('/api/grievance')
         .then(response => response.json())
         .then(grievances => {
             const grievancesList = document.getElementById('grievance-list');
