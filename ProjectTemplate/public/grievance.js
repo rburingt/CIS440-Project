@@ -56,10 +56,25 @@ async function submitForm() {
 
         const result = await response.json();
         document.getElementById('formSubmitted').innerHTML = "Thanks for submitting your complaint. Your complaint number is " + complaintData.complaintID;
-    } catch (error) {
+    } catch (error) { 
         console.error('Error:', error);
         document.getElementById('formSubmitted').innerHTML = "There was an error submitting your complaint.";
     }
 }
 
-document.addEventListener('DOMContentLoaded', populateDropdown);
+function searchComplaint(complaintSN) {
+    console.log("Searching for complaint");
+    fetch('./grievance.json')
+        .then(respone => response.json())
+        .then(grievances => {
+            const grievanceList = document.getElementById('greivance-list');
+
+            grievances.forEach(grievance => {
+                if (grievance.complaintID === complaintSN) {
+                    document.getElementById('complaintDetails') = 'Found grievance';
+                }
+            })
+})
+}
+
+document.addEventListener('DOMContentLoaded', populateDropdown); 
