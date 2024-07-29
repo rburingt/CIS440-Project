@@ -86,5 +86,13 @@
     "type": 4,
     "status": 0,
     "assignedAdmin": "Admin"
+  },
+  {
+    "complaintID": 98353,
+    "text": "Hit me due to issues of my blaster accuracy",
+    "priority": 2,
+    "type": 2,
+    "status": 0,
+    "assignedAdmin": "Admin"
   }
 ]

@@ -8,6 +8,9 @@ CIS440-Project/ProjectTemplate
 
 Run the following command:
 ``` bash
+npm install express
+npm install body-parser
+npm install cors
 node server.js
 ```
 

@@ -1,59 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('/api/grievances')
-        .then(response => response.json())
-        .then(grievances => {
-            const grievancesList = document.getElementById('grievance-list');
+    const grievancesList = document.getElementById('grievance-list');
 
+    if (!grievancesList) {
+        console.error('Grievance list element not found');
+        return;
+    }
+
+    fetch('/api/grievances')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(grievances => {
             grievances.forEach(grievance => {
                 const row = document.createElement('tr');
 
                 const idCell = document.createElement('td');
-                idCell.textContent = grievance.id;
+                idCell.textContent = grievance.complaintID;
                 row.appendChild(idCell);
 
                 const descriptionCell = document.createElement('td');
-                descriptionCell.textContent = grievance.description;
+                descriptionCell.textContent = grievance.text;
                 row.appendChild(descriptionCell);
 
-               //Beginning of priority function
-
+                // Priority function
                 const priorityCell = document.createElement('td');
                 const prioritySelect = document.createElement('select');
 
-                const awaitingReviewOption = document.createElement('option');
-                awaitingReviewOption.textContent = 'awaiting review';
-                awaitingReviewOption.value = 'awaiting review';
-                prioritySelect.appendChild(awaitingReviewOption);
+                const priorities = ['awaiting review', 'P1', 'P2', 'P3', 'P4'];
+                priorities.forEach(priority => {
+                    const option = document.createElement('option');
+                    option.textContent = priority;
+                    option.value = priority;
+                    prioritySelect.appendChild(option);
+                });
 
-                const p1Option = document.createElement('option');
-                p1Option.textContent = 'P1';
-                p1Option.value = 'P1';
-                prioritySelect.appendChild(p1Option);
-
-                const p2Option = document.createElement('option');
-                p2Option.textContent = 'P2';
-                p2Option.value = 'P2';
-                prioritySelect.appendChild(p2Option);
-
-                const p3Option = document.createElement('option');
-                p3Option.textContent = 'P3';
-                p3Option.value = 'P3';
-                prioritySelect.appendChild(p3Option);
-
-                const p4Option = document.createElement('option');
-                p4Option.textContent = 'P4';
-                p4Option.value = 'P4';
-                prioritySelect.appendChild(p4Option);
-
-                prioritySelect.value = grievance.priority;
+                prioritySelect.value = `P${grievance.priority}`;
 
                 prioritySelect.addEventListener('change', () => {
-                    grievance.priority = prioritySelect.value;
-                    console.log(`Grievance ID ${grievance.id} priority updated to ${grievance.priority}`);
+                    grievance.priority = prioritySelect.value.replace('P', '');
+                    console.log(`Grievance ID ${grievance.complaintID} priority updated to ${grievance.priority}`);
 
-                    // Send the updated priority to the backend
-                    
-                    fetch(`/api/grievances/${grievance.id}`, {
+                    fetch(`/api/grievances/${grievance.complaintID}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
@@ -68,29 +58,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 priorityCell.appendChild(prioritySelect);
                 row.appendChild(priorityCell);
-                
-                //End of priority function
 
-
+                // Status function
                 const statusCell = document.createElement('td');
                 const statusSelect = document.createElement('select');
-                
-                const inProgressOption = document.createElement('option');
-                inProgressOption.textContent = 'In Progress';
-                inProgressOption.value = 'In Progress';
-                const resolvedOption = document.createElement('option');
-                resolvedOption.textContent = 'Resolved';
-                resolvedOption.value = 'Resolved';
 
-                statusSelect.appendChild(inProgressOption);
-                statusSelect.appendChild(resolvedOption);
-                statusSelect.value = grievance.status;
+                const statuses = ['In Progress', 'Resolved'];
+                statuses.forEach(status => {
+                    const option = document.createElement('option');
+                    option.textContent = status;
+                    option.value = status;
+                    statusSelect.appendChild(option);
+                });
+
+                statusSelect.value = grievance.status == 0 ? 'In Progress' : 'Resolved';
 
                 statusSelect.addEventListener('change', () => {
-                    grievance.status = statusSelect.value;
-                    console.log(`Grievance ID ${grievance.id} status updated to ${grievance.status}`);
-                    // Send the updated status to the backend
-                    fetch(`/api/grievances/${grievance.id}`, {
+                    grievance.status = statusSelect.value === 'In Progress' ? 0 : 1;
+                    console.log(`Grievance ID ${grievance.complaintID} status updated to ${grievance.status}`);
+
+                    fetch(`/api/grievances/${grievance.complaintID}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',
