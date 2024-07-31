@@ -66,6 +66,39 @@ app.get('/api/grievances', (req, res) => {
     });
 });
 
+// Handle PUT request to update a complaint by ID
+app.put('/api/grievances/:id', (req, res) => {
+    const complaintID = req.params.id;
+    const updatedData = req.body;
+
+    fs.readFile('grievance.json', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error reading file');
+        }
+
+        try {
+            const complaints = JSON.parse(data);
+            const complaintIndex = complaints.findIndex(complaint => complaint.complaintID === complaintID);
+
+            if (complaintIndex === -1) {
+                return res.status(404).send('Complaint not found');
+            }
+
+            const updatedComplaint = { ...complaints[complaintIndex], ...updatedData };
+            complaints[complaintIndex] = updatedComplaint;
+
+            fs.writeFile('grievance.json', JSON.stringify(complaints, null, 2), err => {
+                if (err) {
+                    return res.status(500).send('Error writing file');
+                }
+                res.json(updatedComplaint);
+            });
+        } catch (parseErr) {
+            return res.status(500).send('Error parsing JSON data');
+        }
+    });
+});
+
 // Start server
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);

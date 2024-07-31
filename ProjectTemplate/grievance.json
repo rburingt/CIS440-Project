@@ -2,9 +2,9 @@
   {
     "complaintID": "32456",
     "text": "Stormtrooper TK-421 reporting faulty blaster rifle. The weapon jams during critical missions.",
-    "priority": 1,
+    "priority": "4",
     "type": 1,
-    "status": 0,
+    "status": 1,
     "assignedAdmin": "Bob456"
   },
   {
