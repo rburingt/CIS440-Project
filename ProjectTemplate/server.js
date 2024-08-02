@@ -13,7 +13,7 @@ app.use(express.static('public'));
 
 // Serve the HTML file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'adminview.html'));
+    res.sendFile(path.join(__dirname, 'public', 'adminView.html'));
 });
 
 // Handle the POST request to submit complaints

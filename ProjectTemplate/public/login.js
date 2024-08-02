@@ -21,7 +21,7 @@ $(document).ready(function () {
                 if (isAdmin) {
 
                     // Link to the admin page goes here
-                    window.location.href = 'adminview.html';
+                    window.location.href = 'adminView.html';
                 } else {
 
                     // Link to the user home page goes here
