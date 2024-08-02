@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const grievancesList = document.getElementById('grievance-list');
     const statusFilter = document.getElementById('status-filter');
     const priorityFilter = document.getElementById('priority-filter');
+    const complaintID = document.getElementById('complaintID')
 
     if (!grievancesList) {
         console.error('Grievance list element not found');
@@ -133,6 +134,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     statusFilter.addEventListener('change', applyFilters);
     priorityFilter.addEventListener('change', applyFilters);
+
+    function deleteGrievance(){
+        
+        const grievanceID = getElementById("complaintID").value;
+       
+        fetch(`/api/grievances/${grievance.complaintID}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ priority: grievance.complaintID }),
+        }).then(response => {
+            if (!response.ok) {
+                console.error('Failed to delete complaint');
+            }
+        });
+    
+    
+}
 
     fetchData();
 });

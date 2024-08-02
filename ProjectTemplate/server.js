@@ -13,7 +13,7 @@ app.use(express.static('public'));
 
 // Serve the HTML file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'adminView.html'));
+    res.sendFile(path.join(__dirname, 'public', 'adminview.html'));
 });
 
 // Handle the POST request to submit complaints
@@ -98,6 +98,39 @@ app.put('/api/grievances/:id', (req, res) => {
         }
     });
 });
+
+app.delete('/api/grievances/:id', (req, res) => {
+    const complaintID = req.params.id;
+    const updatedData = req.body;
+
+    fs.readFile('grievance.json', (err, data) => {
+        if (err) {
+            return res.status(500).send('Error reading file');
+        }
+
+        try {
+            const complaints = JSON.parse(data);
+            const complaintIndex = complaints.findIndex(complaint => complaint.complaintID === complaintID);
+
+            if (complaintIndex === -1) {
+                return res.status(404).send('Complaint not found');
+            }
+           
+            complaints.splice(complaintIndex, 1);
+            const deletedComplaint = {...updatedData};
+            
+            fs.writeFile('grievance.json', JSON.stringify(complaints, null, 2), err => {
+                if (err) {
+                    return res.status(500).send('Error writing file');
+                }
+                res.json(updatedComplaint);
+            });
+        } catch (parseErr) {
+            return res.status(500).send('Error parsing JSON data');
+        }
+        });
+});
+
 
 // Start server
 app.listen(port, () => {

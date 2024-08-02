@@ -10,6 +10,13 @@
     <h1>Admin View - Grievances</h1>
     <br />
 
+    <div id = "deleteComplaint">
+        <label>Input Complaint ID to be deleted: </label>
+        <form id = "complaintSubmit">
+            <input type = "text" id ="complaintID">
+            <button type = "submit" onclick=deleteGrievance()>Delete Complaint</button>
+        </form>
+    </div>
  <div id="filter-controls">
         <label for="status-filter">Status:</label>
         <select id="status-filter">
