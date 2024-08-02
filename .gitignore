@@ -328,3 +328,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# Prevent .DS_Store from being submitted for Mac Users
+.DS_Store
+*/.DS_Store
