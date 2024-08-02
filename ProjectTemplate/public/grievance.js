@@ -41,8 +41,7 @@ async function submitForm() {
         text: offenseElement.value,
         priority: grievances.indexOf(grievanceElement.value) + 1, // Match priority
         type: grievances.indexOf(grievanceElement.value) + 1, // Match type
-        status: 0,
-        assignedAdmin: 'Admin' // Placeholder for assigned admin
+        status: 0
     };
 
     try {
@@ -75,7 +74,6 @@ function searchComplaint() {
                     <p>Type: ${complaint.type}</p>
                     <p>Priority: ${complaint.priority}</p>
                     <p>Status: ${complaint.status}</p>
-                    <p>Assigned Admin: ${complaint.assignedAdmin}</p>
                 `;
             } else {
                 document.getElementById('complaintDetails').innerHTML = "Complaint not found.";
