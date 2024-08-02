@@ -2,9 +2,9 @@
   {
     "complaintID": "32456",
     "text": "Stormtrooper TK-421 reporting faulty blaster rifle. The weapon jams during critical missions.",
-    "priority": "4",
+    "priority": "3",
     "type": 1,
-    "status": 1
+    "status": 0
   },
   {
     "complaintID": "75842",
@@ -18,14 +18,14 @@
     "text": "Stormtrooper TK-9987 experienced a delay in transport services, causing missed deployment.",
     "priority": 3,
     "type": 6,
-    "status": 2
+    "status": 1
   },
   {
     "complaintID": "27681",
     "text": "Stormtrooper TK-1247 reports incorrect payment in the latest paycheck. Urgent correction needed.",
     "priority": 4,
     "type": 5,
-    "status": 3
+    "status": 0
   },
   {
     "complaintID": "93542",
@@ -39,7 +39,7 @@
     "text": "Stormtrooper TK-6231 experiencing ongoing technical support issues with helmet HUD.",
     "priority": 3,
     "type": 4,
-    "status": 4
+    "status": 1
   },
   {
     "complaintID": "67284",
@@ -53,27 +53,13 @@
     "text": "Stormtrooper TK-7823 encountered friendly fire during tactical training. Review of protocols needed.",
     "priority": 2,
     "type": 2,
-    "status": 2
+    "status": 0
   },
   {
     "complaintID": "39482",
     "text": "Stormtrooper TK-2149 faced delays in equipment maintenance, impacting mission readiness.",
     "priority": 3,
     "type": 6,
-    "status": 3
-  },
-  {
-    "complaintID": "84752",
-    "text": "Stormtrooper TK-6128 received incorrect payment, affecting morale and efficiency.",
-    "priority": 4,
-    "type": 5,
-    "status": 4
-  },
-  {
-    "complaintID": 98353,
-    "text": "Hit me due to issues of my blaster accuracy",
-    "priority": 2,
-    "type": 2,
-    "status": 0
+    "status": 1
   }
 ]

@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const grievancesList = document.getElementById('grievance-list');
     const statusFilter = document.getElementById('status-filter');
     const priorityFilter = document.getElementById('priority-filter');
-    const complaintID = document.getElementById('complaintID')
 
     if (!grievancesList) {
         console.error('Grievance list element not found');
@@ -15,20 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function fetchData() {
         fetch('/api/grievances')
-        //fetch('grievance.json') I edited it in VSCode Live Server so I used this function to test, but changed it back for Node.js
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 grievances = data;
                 updateTable();
             })
-            .catch(error => {
-                console.error('Error fetching grievances:', error);
-            });
+            .catch(error => console.error('Error fetching grievances:', error));
     }
 
     function updateTable() {
@@ -38,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const priority = priorityFilter.value;
 
         const filteredGrievances = grievances.filter(grievance => {
-            
             const grievanceStatus = grievance.status === 0 ? 'In Progress' : 'Resolved';
             const matchesStatus = status === '' || grievanceStatus === status;
             const matchesPriority = priority === '' || priority === `P${grievance.priority}`;
@@ -83,7 +73,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).then(response => {
                     if (!response.ok) {
                         console.error('Failed to update priority');
+                    } else {
+                        console.log(`Updated priority for complaint ID ${grievance.complaintID}`);
                     }
+                }).catch(error => {
+                    console.error('Error updating priority:', error);
                 });
             });
 
@@ -117,12 +111,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 }).then(response => {
                     if (!response.ok) {
                         console.error('Failed to update status');
+                    } else {
+                        console.log(`Updated status for complaint ID ${grievance.complaintID}`);
+                        // Update the table to reflect the new status
+                        updateTable();
                     }
+                }).catch(error => {
+                    console.error('Error updating status:', error);
                 });
             });
 
             statusCell.appendChild(statusSelect);
             row.appendChild(statusCell);
+
+            // Conditionally render the delete button
+            const deleteCell = document.createElement('td');
+            if (grievance.status === 1) { // Only show delete button if status is "Resolved"
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.addEventListener('click', () => {
+                    deleteGrievance(grievance.complaintID);
+                });
+                deleteCell.appendChild(deleteButton);
+            }
+            row.appendChild(deleteCell);
 
             grievancesList.appendChild(row);
         });
@@ -135,24 +147,26 @@ document.addEventListener('DOMContentLoaded', () => {
     statusFilter.addEventListener('change', applyFilters);
     priorityFilter.addEventListener('change', applyFilters);
 
-    function deleteGrievance(){
-        
-        const grievanceID = getElementById("complaintID").value;
-       
-        fetch(`/api/grievances/${grievance.complaintID}`, {
+    function deleteGrievance(complaintID) {
+        console.log(`Attempting to delete grievance with ID ${complaintID}`);
+
+        fetch(`/api/grievances/${complaintID}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ priority: grievance.complaintID }),
+            }
         }).then(response => {
             if (!response.ok) {
                 console.error('Failed to delete complaint');
+                return;
             }
+            // Remove deleted grievance from the local list and update the table
+            grievances = grievances.filter(grievance => grievance.complaintID !== complaintID);
+            updateTable();
+        }).catch(error => {
+            console.error('Error deleting grievance:', error);
         });
-    
-    
-}
+    }
 
     fetchData();
 });

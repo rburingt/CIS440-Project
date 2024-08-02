@@ -10,23 +10,16 @@
     <h1>Admin View - Grievances</h1>
     <br />
 
-    <div id = "deleteComplaint">
-        <label>Input Complaint ID to be deleted: </label>
-        <form id = "complaintSubmit">
-            <input type = "text" id ="complaintID">
-            <button type = "submit" onclick=deleteGrievance()>Delete Complaint</button>
-        </form>
-    </div>
- <div id="filter-controls">
+    <div id="filter-controls">
         <label for="status-filter">Status:</label>
-        <select id="status-filter">
+        <select id="status-filter" name="status-filter">
             <option value="">All</option>
             <option value="In Progress">In Progress</option>
             <option value="Resolved">Resolved</option>
         </select>
 
         <label for="priority-filter">Priority:</label>
-        <select id="priority-filter">
+        <select id="priority-filter" name="priority-filter">
             <option value="">All</option>
             <option value="P1">P1</option>
             <option value="P2">P2</option>
@@ -42,6 +35,7 @@
                 <th>Description</th>
                 <th>Priority Level</th>
                 <th>Status</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody id="grievance-list">

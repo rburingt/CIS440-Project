@@ -16,121 +16,70 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'adminview.html'));
 });
 
+// Helper function to read grievances from the JSON file
+const readGrievances = () => {
+    try {
+        const data = fs.readFileSync('grievance.json', 'utf8');
+        return JSON.parse(data);
+    } catch (err) {
+        if (err.code === 'ENOENT') {
+            return [];
+        } else {
+            throw err;
+        }
+    }
+};
+
+// Helper function to write grievances to the JSON file
+const writeGrievances = (grievances) => {
+    fs.writeFileSync('grievance.json', JSON.stringify(grievances, null, 2));
+};
+
 // Handle the POST request to submit complaints
 app.post('/submitComplaint', (req, res) => {
     const newComplaint = req.body;
-
-    fs.readFile('grievance.json', (err, data) => {
-        if (err && err.code === 'ENOENT') {
-            const complaints = [newComplaint];
-            fs.writeFile('grievance.json', JSON.stringify(complaints, null, 2), err => {
-                if (err) {
-                    return res.status(500).send('Error writing file');
-                }
-                return res.json({ status: 'success' });
-            });
-        } else if (err) {
-            return res.status(500).send('Error reading file');
-        } else {
-            try {
-                const complaints = JSON.parse(data);
-                complaints.push(newComplaint);
-                fs.writeFile('grievance.json', JSON.stringify(complaints, null, 2), err => {
-                    if (err) {
-                        return res.status(500).send('Error writing file');
-                    }
-                    res.json({ status: 'success' });
-                });
-            } catch (parseErr) {
-                return res.status(500).send('Error parsing JSON data');
-            }
-        }
-    });
+    const grievances = readGrievances();
+    grievances.push(newComplaint);
+    writeGrievances(grievances);
+    res.json({ status: 'success' });
 });
 
 // Handle GET request for complaints
 app.get('/api/grievances', (req, res) => {
-    fs.readFile('grievance.json', (err, data) => {
-        if (err && err.code === 'ENOENT') {
-            return res.json([]);
-        } else if (err) {
-            return res.status(500).send('Error reading file');
-        } else {
-            try {
-                const complaints = JSON.parse(data);
-                res.json(complaints);
-            } catch (parseErr) {
-                return res.status(500).send('Error parsing JSON data');
-            }
-        }
-    });
+    const grievances = readGrievances();
+    res.json(grievances);
 });
 
 // Handle PUT request to update a complaint by ID
 app.put('/api/grievances/:id', (req, res) => {
     const complaintID = req.params.id;
     const updatedData = req.body;
+    const grievances = readGrievances();
+    const complaintIndex = grievances.findIndex(complaint => complaint.complaintID === complaintID);
 
-    fs.readFile('grievance.json', (err, data) => {
-        if (err) {
-            return res.status(500).send('Error reading file');
-        }
+    if (complaintIndex === -1) {
+        return res.status(404).send('Complaint not found');
+    }
 
-        try {
-            const complaints = JSON.parse(data);
-            const complaintIndex = complaints.findIndex(complaint => complaint.complaintID === complaintID);
-
-            if (complaintIndex === -1) {
-                return res.status(404).send('Complaint not found');
-            }
-
-            const updatedComplaint = { ...complaints[complaintIndex], ...updatedData };
-            complaints[complaintIndex] = updatedComplaint;
-
-            fs.writeFile('grievance.json', JSON.stringify(complaints, null, 2), err => {
-                if (err) {
-                    return res.status(500).send('Error writing file');
-                }
-                res.json(updatedComplaint);
-            });
-        } catch (parseErr) {
-            return res.status(500).send('Error parsing JSON data');
-        }
-    });
+    grievances[complaintIndex] = { ...grievances[complaintIndex], ...updatedData };
+    writeGrievances(grievances);
+    res.json(grievances[complaintIndex]);
 });
 
+// Handle DELETE request to delete a complaint by ID
 app.delete('/api/grievances/:id', (req, res) => {
     const complaintID = req.params.id;
-    const updatedData = req.body;
+    let grievances = readGrievances();
+    const complaintIndex = grievances.findIndex(complaint => complaint.complaintID === complaintID);
 
-    fs.readFile('grievance.json', (err, data) => {
-        if (err) {
-            return res.status(500).send('Error reading file');
-        }
+    if (complaintIndex === -1) {
+        return res.status(404).send('Complaint not found');
+    }
 
-        try {
-            const complaints = JSON.parse(data);
-            const complaintIndex = complaints.findIndex(complaint => complaint.complaintID === complaintID);
-
-            if (complaintIndex === -1) {
-                return res.status(404).send('Complaint not found');
-            }
-           
-            complaints.splice(complaintIndex, 1);
-            const deletedComplaint = {...updatedData};
-            
-            fs.writeFile('grievance.json', JSON.stringify(complaints, null, 2), err => {
-                if (err) {
-                    return res.status(500).send('Error writing file');
-                }
-                res.json(updatedComplaint);
-            });
-        } catch (parseErr) {
-            return res.status(500).send('Error parsing JSON data');
-        }
-        });
+    grievances = grievances.filter(complaint => complaint.complaintID !== complaintID);
+    writeGrievances(grievances);
+    res.status(204).send();
 });
-
 
 // Start server
 app.listen(port, () => {
