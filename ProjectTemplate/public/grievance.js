@@ -68,12 +68,22 @@ function searchComplaint() {
         .then(grievances => {
             const complaint = grievances.find(grievance => grievance.complaintID === complaintSN);
             if (complaint) {
+                // Mappings for type, priority, and status
+                const typeMapping = ["Unknown", "Faulty Equipment", "Friendly Fire", "Service Delay", "Incorrect Check Amount", "Bacta Tank Leaking", "Technical Support Problem"];
+                const priorityMapping = ["Unknown", "P1", "P2", "P3", "P4", "P5", "P6"];
+                const statusMapping = ["In Progress", "Resolved"];
+
+                // Get the actual values
+                const typeValue = typeMapping[complaint.type] || "Unknown";
+                const priorityValue = priorityMapping[complaint.priority] || "Unknown";
+                const statusValue = statusMapping[complaint.status] || "Unknown";
+
                 document.getElementById('complaintDetails').innerHTML = `
                     <p>Complaint ID: ${complaint.complaintID}</p>
                     <p>Description: ${complaint.text}</p>
-                    <p>Type: ${complaint.type}</p>
-                    <p>Priority: ${complaint.priority}</p>
-                    <p>Status: ${complaint.status}</p>
+                    <p>Type: ${typeValue}</p>
+                    <p>Priority: ${priorityValue}</p>
+                    <p>Status: ${statusValue}</p>
                 `;
             } else {
                 document.getElementById('complaintDetails').innerHTML = "Complaint not found.";
