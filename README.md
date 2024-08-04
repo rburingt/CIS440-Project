@@ -6,7 +6,7 @@ To run our application all you need to do is navigate in your terminal to the Pr
 CIS440-Project/ProjectTemplate
 ```
 
-Run the following command:
+Run the following commands:
 ``` bash
 npm install express body-parser cors
 node server.js
