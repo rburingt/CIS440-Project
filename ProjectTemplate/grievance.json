@@ -70,5 +70,13 @@
     "priority": 3,
     "type": 6,
     "status": 1
+  },
+  {
+    "complaintID": "34832",
+    "text": "Storm Trooper TK-2148 had a delayed service incident causing a loss against the Rebellion",
+    "leader": "N/A",
+    "priority": 3,
+    "type": 3,
+    "status": 0
   }
 ]
