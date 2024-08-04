@@ -39,6 +39,7 @@ async function submitForm() {
     const complaintData = {
         complaintID: generateComplaintNumber(99999), // Generate complaint number
         text: offenseElement.value,
+        leader: leaderElement.value,
         priority: grievances.indexOf(grievanceElement.value) + 1, // Match priority
         type: grievances.indexOf(grievanceElement.value) + 1, // Match type
         status: 0
