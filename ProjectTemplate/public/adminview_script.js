@@ -38,13 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
         filteredGrievances.forEach(grievance => {
             const row = document.createElement('tr');
 
+            // Grievance ID
             const idCell = document.createElement('td');
             idCell.textContent = grievance.complaintID;
             row.appendChild(idCell);
 
+            // Grivance Description
             const descriptionCell = document.createElement('td');
             descriptionCell.textContent = grievance.text;
             row.appendChild(descriptionCell);
+
+            // Grievance Leader
+            const leaderCell = document.createElement('td');
+            leaderCell.textContent = grievance.leader;
+            row.appendChild(leaderCell);
 
             // Priority function
             const priorityCell = document.createElement('td');
