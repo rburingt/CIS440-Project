@@ -1,7 +1,7 @@
 [
   {
     "complaintID": "32456",
-    "text": "Stormtrooper TK-421 reporting faulty blaster rifle. The weapon jams during critical missions.",
+    "text": "Reporting faulty blaster rifle. The weapon jams during critical missions.",
     "leader": "General Hux",
     "priority": 1,
     "type": 1,
@@ -9,7 +9,7 @@
   },
   {
     "complaintID": "75842",
-    "text": "Stormtrooper TK-5338 encountered friendly fire during a routine patrol. Request immediate investigation.",
+    "text": "Encountered friendly fire during a routine patrol. Request immediate investigation.",
     "leader": "Kylo Ren",
     "priority": 2,
     "type": 2,
@@ -17,23 +17,23 @@
   },
   {
     "complaintID": "49175",
-    "text": "Stormtrooper TK-9987 experienced a delay in transport services, causing missed deployment.",
+    "text": "Experienced a delay in transport services, causing missed deployment.",
     "leader": "Kylo Ren",
-    "priority": 6,
+    "priority": "awaiting review",
     "type": 3,
     "status": 1
   },
   {
     "complaintID": "27681",
-    "text": "Stormtrooper TK-1247 reports incorrect payment in the latest paycheck. Urgent correction needed.",
+    "text": "Reports incorrect payment in the latest paycheck. Urgent correction needed.",
     "leader": "Kylo Ren",
-    "priority": 5,
+    "priority": "awaiting review",
     "type": 4,
     "status": 0
   },
   {
     "complaintID": "93542",
-    "text": "Stormtrooper TK-3425 found bacta tank leaking, reducing effectiveness of medical treatment.",
+    "text": "Found bacta tank leaking, reducing effectiveness of medical treatment.",
     "leader": "Captain Phasma",
     "priority": 2,
     "type": 3,
@@ -41,7 +41,7 @@
   },
   {
     "complaintID": "12895",
-    "text": "Stormtrooper TK-6231 experiencing ongoing technical support issues with helmet HUD.",
+    "text": "Experiencing ongoing technical support issues with helmet HUD.",
     "leader": "Captain Phasma",
     "priority": 3,
     "type": 4,
@@ -49,7 +49,7 @@
   },
   {
     "complaintID": "67284",
-    "text": "Stormtrooper TK-5567 reports faulty armor plating, compromising safety in combat.",
+    "text": "Reports faulty armor plating, compromising safety in combat.",
     "leader": "Captain Phasma",
     "priority": 1,
     "type": 1,
@@ -57,7 +57,7 @@
   },
   {
     "complaintID": "49832",
-    "text": "Stormtrooper TK-7823 encountered friendly fire during tactical training. Review of protocols needed.",
+    "text": "Encountered friendly fire during tactical training. Review of protocols needed.",
     "leader": "General Hux",
     "priority": 2,
     "type": 2,
@@ -65,7 +65,7 @@
   },
   {
     "complaintID": "39482",
-    "text": "Stormtrooper TK-2149 faced delays in equipment maintenance, impacting mission readiness.",
+    "text": "Faced delays in equipment maintenance, impacting mission readiness.",
     "leader": "General Hux",
     "priority": 3,
     "type": 6,
@@ -73,7 +73,7 @@
   },
   {
     "complaintID": "34832",
-    "text": "Storm Trooper TK-2148 had a delayed service incident causing a loss against the Rebellion",
+    "text": "Had a delayed service incident causing a loss against the Rebellion",
     "leader": "N/A",
     "priority": 3,
     "type": 3,
